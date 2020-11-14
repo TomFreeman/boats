@@ -117,6 +117,25 @@ npm run boats -- --convert_to_yml ./src
 ## Programmatic Use
 You can also use BOATS programmatically, just require (import if you are using a bundler) the lib into your project.
 
+## Snippets
+Snippets are prebuild files that can be injected into an existing file system.
+
+Current file snippets are bundled into the core of BOATS: https://github.com/johndcarmichael/boats/tree/master/snippets
+
+Pull requests are welcomed for more snippets.
+
+Example use:
+```
+boats -I oa2/crud -R ./src/paths -N user
+```
+
+This will output:
+- A new folder named `user` inside `./src/paths`
+- The files from the snippet are rendered via nunjucks as usual.
+- The full commander object and thus all arguments are injected into the templates.
+- Currently, the only snippet is a simple oa2/crud set of files, soon to be expanded. 
+
+
 ## Templating
 As Nunjucks is used as the tpl engine, this means if you use a smart IDE such as intellij you are able to utilize the syntax highlight of both yml and njk.
 
@@ -522,7 +541,9 @@ url: <$ host $>
 > !Tip: These variables will override any variables injected into the tpl engine from the `process.env`
 
 ## Changelog
-- 2020/08/29 2.0.0:  (to be released) Route permissions will auto inject a namespace by default, this is a breaking change from v1 behaviour. To prevent set globalPrefix to false 
+- 2020/11/07 2.2.0:  Snippets feature added for faster scaffolding into an existing project
+- 2020/11/07 2.1.0:  Support for the windows file system
+- 2020/08/29 2.0.0:  Route permissions will auto inject a namespace by default, this is a breaking change from v1 behaviour. To prevent set globalPrefix to false 
 - 2020/08/28 1.25.4: Rollback to 1.24.1 to revert the breaking change
 - 2020/08/28 1.25.0: A breaking change was released to live, sorry
 - 2020/08/27 1.24.0: feat: Add `-y`, `--yes` option to skip remote version check
