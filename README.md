@@ -118,22 +118,31 @@ npm run boats -- --convert_to_yml ./src
 You can also use BOATS programmatically, just require (import if you are using a bundler) the lib into your project.
 
 ## Snippets
-Snippets are prebuild files that can be injected into an existing file system.
+Snippets are prebuild files that can be injected into an existing file system, they can be pulled from a remote url or from a local disk.
 
-Current file snippets are bundled into the core of BOATS: https://github.com/johndcarmichael/boats/tree/master/snippets
+There are a few snippets bundled with BOATS in the Snippets branch: https://github.com/johndcarmichael/boats/tree/snippets
 
-Pull requests are welcomed for more snippets.
+Pull requests are welcomed for more snippets :)
 
-Example use:
+Example use pull from remote url:
 ```
-boats -I oa2/crud -R ./src/paths -N user
+boats -- -I https://github.com/johndcarmichael/boats.git#snippets -S oa2/crud -R ./src/paths -N beer
 ```
 
 This will output:
-- A new folder named `user` inside `./src/paths`
-- The files from the snippet are rendered via nunjucks as usual.
-- The full commander object and thus all arguments are injected into the templates.
-- Currently, the only snippet is a simple oa2/crud set of files, soon to be expanded. 
+- Fetch the snippet from the URL provided and write to a dir within the project
+- The snippet renderer will then look for the optional -S flag, if present, use this subdir
+- The snippets will then be copied to your project, then rendered with Nunjucks.
+
+Example use pull from local disk:
+```
+boats -- -I ../../mysnippets -S oa2/crud -R ./src/paths -N beer
+```
+
+This will output:
+- Check the local dir of `../../mysnippets` exists
+- The snippet renderer will then look for the optional -S flag, if present, use this subdir
+- The snippets will then be copied to your project, then rendered with Nunjucks.
 
 
 ## Templating
