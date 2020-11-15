@@ -126,7 +126,7 @@ Pull requests are welcomed for more snippets :)
 
 Example use pull from remote url:
 ```
-boats -- -I https://github.com/johndcarmichael/boats.git#snippets -S oa2/crud -R ./src/paths -N beer
+npm run boats -- -I https://github.com/johndcarmichael/boats.git#snippets -S oa2/crud -R ./src/paths -N beer
 ```
 
 This will output:
@@ -136,7 +136,7 @@ This will output:
 
 Example use pull from local disk:
 ```
-boats -- -I ../../mysnippets -S oa2/crud -R ./src/paths -N beer
+npm run boats -- -I ../../mysnippets -S oa2/crud -R ./src/paths -N beer
 ```
 
 This will output:
