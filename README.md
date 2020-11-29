@@ -320,6 +320,12 @@ Content is either a JSON representation of the YAML content to inject, or a stri
 
 Type less do more.
 
+### merge
+allOf equiv. for when allOf is not supported.
+```
+{{ merge('../userAgent/model.yml', '../userIp/model.yml') }}
+```
+
 ### mixin
 Example use:
 ```yaml
