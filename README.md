@@ -214,10 +214,10 @@ Path maching is handled via [picomatch](https://github.com/micromatch/picomatch#
 Anatomy of the injection:
 ```yaml
 {{
-  inject([
+  inject([                        # The inject block accepts an array of objects with options described below
     {
       toAllOperations: {
-        content: {                # Required - the content to inject to each
+        content: {                # Required - the content to inject to each, can be anything you choose. Restrictions are only valid async/openapi syntax
           security: [{            # path or channel, filtered by the options
             apiKey: []            # below.
           }]
@@ -229,12 +229,25 @@ Anatomy of the injection:
         includeOnlyChannels: [    # Optional - string array containing channels
           '/admin/**'             # only include these channels (parsed with https://github.com/micromatch/picomatch)
         ],
-        excludePaths: [           # Optional - string array containing paths
+        excludePaths: [           # Optional - string|object array containing paths or paths and methods
           '/users',               # to exclude (parsed with https://github.com/micromatch/picomatch)
-          '/admin/:adminId'
+          {
+            path: '/car/*',       # Exclude all car paths where the method is get
+            methods: [
+              'get'
+            ]
+          }
         ],
         includeOnlyPaths: [       # Optional - string array containing channels
           '/admin/**'             # only include these paths (parsed with https://github.com/micromatch/picomatch)
+          {
+            path: '/car/*',       # Include all car paths where the method is post/put/delete
+            methods: [
+              'post', 
+              'put', 
+              'delete'
+            ]
+          }
         ],
         includeMethods: [         # Optional - string array containing method
           'post',                 # whitelist (default is all methods)
