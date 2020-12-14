@@ -333,9 +333,9 @@ Content is either a JSON representation of the YAML content to inject, or a stri
 
 Type less do more.
 
-### pickProps from other models
+### pickProps
 
-It takes the definitions paths as the first parameter and an array of strings or rest parameters specifying props to pick.
+It takes the definitions path as the first parameter, and an array of strings or rest parameters specifying props to pick:
 ```
 {{ pickProps('path', 'prop1', 'prop2') }}
 ```
