@@ -333,6 +333,49 @@ Content is either a JSON representation of the YAML content to inject, or a stri
 
 Type less do more.
 
+### pickProps from other models
+
+It takes the definitions paths as the first parameter and an array of strings or rest parameters specifying props to pick.
+```
+{{ pickProps('path', 'prop1', 'prop2') }}
+```
+or
+```
+{{ pickProps('path', ['prop1', 'prop2']) }}
+```
+
+For example, a model file with many attributes might look like:
+```
+type: object
+required:
+  - name
+  - coordinates
+properties:
+  name:
+    type: string
+  coordinates:
+    type: array
+    items:
+      type: string
+  ... etc etc
+```
+
+Another definition doesn't want this whole definition, just a part, but we don't want juggle around with complex openapi inheritance features, so pickProps can be used instead:
+```
+{{ pickProps('./post.yml.njk', 'name') }}
+```
+
+The output would be:
+```
+LocationPut:
+  type: object
+  required:
+    - name
+  properties:
+    name:
+      type: string
+```
+
 ### merge
 allOf equiv. for when allOf is not supported.
 ```
