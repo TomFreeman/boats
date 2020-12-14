@@ -612,7 +612,11 @@ url: <$ host $>
 > !Tip: These variables will override any variables injected into the tpl engine from the `process.env`
 
 ## Changelog
-- 2020/11/07 2.2.0:  Snippets feature added for faster scaffolding into an existing project
+- 2020/12/14 2.7.0:  pickProps added, allowing simple object building from props of another
+- 2020/12/12 2.6.0:  Inject include/exclude now takes string[] or {path:string, method: string}[] for finer control
+- 2020/11/15 2.5.0:  Merge objects added for when allOf is not possible
+- 2020/11/09 2.3/4.0:  Snippets extracted out of the core, now pulled from remote or local
+- 2020/11/08 2.2.0:  Snippets feature added for faster scaffolding into an existing project
 - 2020/11/07 2.1.0:  Support for the windows file system
 - 2020/08/29 2.0.0:  Route permissions will auto inject a namespace by default, this is a breaking change from v1 behaviour. To prevent set globalPrefix to false 
 - 2020/08/28 1.25.4: Rollback to 1.24.1 to revert the breaking change
